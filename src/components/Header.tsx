@@ -11,16 +11,16 @@ const Header = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const productDropdown = [
-    { label: "Fragrance Oil", href: "/produk/fragrance-oil" },
-    { label: "Botol & Kemasan", href: "/produk/botol-kemasan" },
-    { label: "Paket Usaha Refill", href: "/produk/paket-usaha" },
+    { label: "Fragrance Oil", href: "/kontak" }, // Temporarily redirect to contact
+    { label: "Botol & Kemasan", href: "/kontak" },
+    { label: "Paket Usaha Refill", href: "/kontak" },
   ];
 
   const solutionDropdown = [
-    { label: "Laundry & Linen", href: "/solusi/laundry-linen" },
-    { label: "Hotel & Air Care", href: "/solusi/hotel-air-care" },
-    { label: "Retail Refill", href: "/solusi/retail-refill" },
-    { label: "Brand Parfum Baru", href: "/solusi/brand-parfum-baru" },
+    { label: "Laundry & Linen", href: "/kontak" }, // Temporarily redirect to contact
+    { label: "Hotel & Air Care", href: "/kontak" },
+    { label: "Retail Refill", href: "/kontak" },
+    { label: "Brand Parfum Baru", href: "/kontak" },
   ];
 
   const handleDropdownToggle = (dropdown: string) => {

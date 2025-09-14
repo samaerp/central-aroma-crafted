@@ -15,28 +15,28 @@ import logoFooter from "@/assets/logo-footer.png";
 
 const Footer = () => {
   const productLinks = [
-    { label: "Fragrance Oil", href: "/produk/fragrance-oil" },
-    { label: "Botol & Kemasan", href: "/produk/botol-kemasan" },
-    { label: "Paket Usaha Refill", href: "/produk/paket-usaha" },
+    { label: "Fragrance Oil", href: "/kontak" }, // Temporarily redirect to contact
+    { label: "Botol & Kemasan", href: "/kontak" },
+    { label: "Paket Usaha Refill", href: "/kontak" },
   ];
 
   const solutionLinks = [
-    { label: "Laundry & Linen", href: "/solusi/laundry-linen" },
-    { label: "Hotel & Air Care", href: "/solusi/hotel-air-care" },
-    { label: "Retail Refill", href: "/solusi/retail-refill" },
-    { label: "Brand Parfum Baru", href: "/solusi/brand-parfum-baru" },
+    { label: "Laundry & Linen", href: "/kontak" }, // Temporarily redirect to contact
+    { label: "Hotel & Air Care", href: "/kontak" },
+    { label: "Retail Refill", href: "/kontak" },
+    { label: "Brand Parfum Baru", href: "/kontak" },
   ];
 
   const serviceLinks = [
-    { label: "Aroma Development", href: "/layanan/aroma-development" },
-    { label: "Maklon Parfum", href: "/layanan/maklon-parfum" },
+    { label: "Aroma Development", href: "/layanan" },
+    { label: "Maklon Parfum", href: "/layanan" },
     { label: "Konsultasi", href: "/kontak" },
   ];
 
   const quickLinks = [
     { label: "Tentang Kami", href: "/tentang" },
-    { label: "Blog & Insights", href: "/insight" },
-    { label: "Download Resources", href: "/resources" },
+    { label: "Blog & Insights", href: "/kontak" }, // Temporarily redirect to contact
+    { label: "Download Resources", href: "/kontak" }, // Temporarily redirect to contact
     { label: "Kontak", href: "/kontak" },
   ];
 
