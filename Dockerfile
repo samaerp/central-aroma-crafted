@@ -6,10 +6,10 @@
 FROM node:20-alpine AS build
 WORKDIR /app
 
-# Non-interaktif & lebih konsisten di CI
+# Non-interactive & more consistent in CI
 ENV CI=1
 
-# Install dependencies (fallback ke npm install jika lockfile out-of-sync)
+# Install dependencies (fallback to npm install if lockfile out-of-sync)
 COPY package*.json ./
 RUN set -eux; \
     npm config set audit false; \
@@ -27,28 +27,28 @@ RUN set -eux; \
 COPY . .
 
 # Build-time site URL (Vite: import.meta.env.VITE_SITE_URL)
-ARG VITE_SITE_URL=https://dev-web.centralaroma.com
+ARG VITE_SITE_URL=https://app.example.com
 ENV VITE_SITE_URL=${VITE_SITE_URL}
 
-# Build static app (pastikan script "build" ada di package.json)
+# Build static app (ensure "build" script exists in package.json)
 RUN npm run build
 
 ###############################
 # RUNTIME STAGE
 ###############################
-FROM nginx:1.27-alpine
+FROM nginx:1.25-alpine
 
-# Optional: minimalkan log bawaan entrypoint
+# Optional: minimize default entrypoint logs
 ENV NGINX_ENTRYPOINT_QUIET_LOGS=1
 
-# Pakai Nginx config kamu (SPA with try_files)
-COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
+# Use Nginx config (SPA with try_files)
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Bersihkan default html lalu copy hasil build ke root html
+# Clean default html then copy build results to html root
 RUN rm -rf /usr/share/nginx/html/*
 COPY --from=build /app/dist/ /usr/share/nginx/html/
 
-# Healthcheck file agar pasti 200
+# Healthcheck file to ensure 200 response
 RUN printf "ok" > /usr/share/nginx/html/healthz
 
 # Healthcheck endpoint: http://localhost/healthz
