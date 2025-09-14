@@ -6,10 +6,10 @@
 FROM node:20-alpine AS build
 WORKDIR /app
 
-# Lebih konsisten & non-interaktif
+# Non-interaktif & lebih konsisten di CI
 ENV CI=1
 
-# Install dependencies (dengan fallback jika lockfile out-of-sync)
+# Install dependencies (fallback ke npm install jika lockfile out-of-sync)
 COPY package*.json ./
 RUN set -eux; \
     npm config set audit false; \
@@ -30,7 +30,7 @@ COPY . .
 ARG VITE_SITE_URL=https://dev-web.centralaroma.com
 ENV VITE_SITE_URL=${VITE_SITE_URL}
 
-# Build the static app
+# Build static app (pastikan script "build" ada di package.json)
 RUN npm run build
 
 ###############################
@@ -38,11 +38,15 @@ RUN npm run build
 ###############################
 FROM nginx:1.27-alpine
 
-# Copy Nginx config (pastikan sudah handle SPA routing dengan try_files)
+# Optional: minimalkan log bawaan entrypoint
+ENV NGINX_ENTRYPOINT_QUIET_LOGS=1
+
+# Pakai Nginx config kamu (SPA with try_files)
 COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
 
-# Static files
-COPY --from=build /app/dist /usr/share/nginx/html
+# Bersihkan default html lalu copy hasil build ke root html
+RUN rm -rf /usr/share/nginx/html/*
+COPY --from=build /app/dist/ /usr/share/nginx/html/
 
 # Healthcheck file agar pasti 200
 RUN printf "ok" > /usr/share/nginx/html/healthz
@@ -52,4 +56,4 @@ HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
   CMD wget -qO- http://127.0.0.1/healthz || exit 1
 
 EXPOSE 80
-# Nginx runs by default as PID 1
+# Nginx runs as PID 1 by default
