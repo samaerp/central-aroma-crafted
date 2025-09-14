@@ -1,16 +1,22 @@
-# Central Aroma Crafted
+# Welcome to your Lovable project
 
 ## Project info
 
-This is the Central Aroma Crafted project repository.
+**URL**: https://lovable.dev/projects/17afa33e-07df-40e5-9ff2-4c9a112c2342
 
 ## How can I edit this code?
 
 There are several ways of editing your application.
 
+**Use Lovable**
+
+Simply visit the [Lovable Project](https://lovable.dev/projects/17afa33e-07df-40e5-9ff2-4c9a112c2342) and start prompting.
+
+Changes made via Lovable will be committed automatically to this repo.
+
 **Use your preferred IDE**
 
-You can work locally using your own IDE by cloning this repo and pushing changes.
+If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
 
 The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
@@ -56,16 +62,12 @@ This project is built with:
 
 ## How can I deploy this project?
 
-You can deploy this project using any hosting service that supports static websites, such as:
+Simply open [Lovable](https://lovable.dev/projects/17afa33e-07df-40e5-9ff2-4c9a112c2342) and click on Share -> Publish.
 
-- Vercel
-- Netlify
-- GitHub Pages
-- AWS S3
-- Firebase Hosting
-
-## Can I connect a custom domain to my project?
+## Can I connect a custom domain to my Lovable project?
 
 Yes, you can!
 
-Most hosting services allow you to connect a custom domain to your project. Refer to your hosting provider's documentation for specific instructions.
+To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+
+Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
